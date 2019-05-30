@@ -1,4 +1,6 @@
-1. `git clone https://github.com/Koffi94/Teaching-HEIGVD-RES-2019-Labo-HTTPInfra.git HTTP-Infra`
+# Report Step 1
+
+1. git clone https://github.com/Koffi94/Teaching-HEIGVD-RES-2019-Labo-HTTPInfra.git HTTP-Infra`
 
 2. `git checkout -b fb-apache-static`
 
@@ -23,4 +25,4 @@
 
 10. Test the container with your browser web :
 
-   ![](/home/olivier/HEIG/S4/RES/Labos/HTTP-Infra/images/Step1/test_browser.png)
+   ![](./images/Step1/test_browser.png)
