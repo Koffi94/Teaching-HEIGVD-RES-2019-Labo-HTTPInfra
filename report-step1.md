@@ -1,17 +1,28 @@
-1) mkdir docker-images
+# Report Step 1
 
-2) mkdir apache-php-image
+1. git clone https://github.com/Koffi94/Teaching-HEIGVD-RES-2019-Labo-HTTPInfra.git HTTP-Infra`
 
-3) mkdir content
+2. `git checkout -b fb-apache-static`
 
-4) touch Dockerfile and put the following content inside :
+3. Go in **HTTP-Infra** directory.
 
-5) Download zip bootstrap, unzip and put the content in conten directory
+4. `mkdir -p docker-images/apache-php-image/content`
 
-6) custom index.html
+5. Go in **apache-php-image** directory, `touch Dockerfile` and put the following content inside :
 
-7) Build image
+   ```dockerfile
+   FROM php:7.2-apache
+   COPY content/ /var/www/html/
+   ```
 
-8) run images
+6. Download zip bootstrap on <https://startbootstrap.com/themes/creative/>, unzip the file and put the content in content directory
 
-9) test on browser
+7. Custom **index.html** as you want
+
+8. Go in **apache-php-image** directory and build image with `docker build -t res/apache_php .`
+
+9. Start the container with `docker run -d --rm -p 9090:80 res/apache_php`
+
+10. Test the container with your browser web :
+
+   ![](./images/Step1/test_browser.png)
