@@ -47,7 +47,7 @@
 
    ## Dockerfile mode
 
-10. In **docker-images/apache-reverse-proxy**, create Dockerfile with the following content :
+10. Go back in the host, go in **docker-images/apache-reverse-proxy**, create **Dockerfile** with the following content :
 
     ```dockerfile
     FROM php:7.2-apache
@@ -58,9 +58,43 @@
     RUN a2ensite 000-* 001-*
     ```
 
-11. Test with PostMan :
+11. `mkdir -p conf/sites-available`
 
-    Set the correct host in header
+12. `vim conf/sites-available/000-default.conf`
+
+    ```bash
+    <VirtualHost *:80>
+    </VirtualHost>
+    ```
+
+    Save it
+
+    
+
+13. `vim conf/sites-available/001-default.conf`
+
+    ```bash
+    <VirtualHost *:80>
+    	ServerName demo.res.ch
+    
+    	#ErrorLog ${APACHE_LOG_DIR}/error.log
+    	#CustomLog ${APACHE_LOG_DIR}/access.log combined
+    
+    	ProxyPass "/api/students/" "http://172.17.0.3:3000/"
+    	ProxyPassReverse "/api/students/" "http://172.17.0.3:3000/"
+    
+    	ProxyPass "/" "http://172.17.0.2:80/"
+    	ProxyPassReverse "/" "http://172.17.0.2:80/"
+    </VirtualHost>
+    ```
+
+    Save it
+
+    
+
+14. Test with PostMan :
+
+    Set the correct host in headers
 
     static page :
 
@@ -68,13 +102,15 @@
 
 
     dynamic page :
-
+    
     ![](./images/Step3/postman_test_dynamic.png)
+
 
 
 12. Configure **/etc/hosts** on the host :
 
     ![](./images/Step3/config_hosts.png)
+
 
 
 13. Test with browser web :
