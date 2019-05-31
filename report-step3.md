@@ -26,8 +26,8 @@
    	#ErrorLog ${APACHE_LOG_DIR}/error.log
    	#CustomLog ${APACHE_LOG_DIR}/access.log combined
    
-   	ProxyPass "/api/students/" "http://172.17.0.3:3000/"
-   	ProxyPassReverse "/api/students/" "http://172.17.0.3:3000/"
+   	ProxyPass "/api/animals/" "http://172.17.0.3:3000/"
+   	ProxyPassReverse "/api/animals/" "http://172.17.0.3:3000/"
    
    	ProxyPass "/" "http://172.17.0.2:80/"
    	ProxyPassReverse "/" "http://172.17.0.2:80/"
@@ -80,8 +80,8 @@
     	#ErrorLog ${APACHE_LOG_DIR}/error.log
     	#CustomLog ${APACHE_LOG_DIR}/access.log combined
     
-    	ProxyPass "/api/students/" "http://172.17.0.3:3000/"
-    	ProxyPassReverse "/api/students/" "http://172.17.0.3:3000/"
+    	ProxyPass "/api/animals/" "http://172.17.0.3:3000/"
+    	ProxyPassReverse "/api/animals/" "http://172.17.0.3:3000/"
     
     	ProxyPass "/" "http://172.17.0.2:80/"
     	ProxyPassReverse "/" "http://172.17.0.2:80/"
