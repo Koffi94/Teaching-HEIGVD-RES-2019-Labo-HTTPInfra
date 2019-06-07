@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
+docker stop $(docker ps -q) && docker rm $(docker ps -aq)
 docker run -d --rm --name apache_static_1 res/apache_php
 docker run -d --rm --name apache_static_2 res/apache_php
 docker run -d --rm --name express_dynamic_1 res/express_animals
