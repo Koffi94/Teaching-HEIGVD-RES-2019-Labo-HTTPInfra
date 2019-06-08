@@ -13,7 +13,8 @@ docker run -d --rm --name express_dynamic_2 res/express_animals
 
 docker run -d --rm -e STATIC_APP_1=172.17.0.2:80 -e STATIC_APP_2=172.17.0.3:80 -e DYNAMIC_APP_1=172.17.0.4:3000 -e DYNAMIC_APP_2=172.17.0.5:3000 --name apache_rp -p 8080:80 res/apache_rp
 
+docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+
 docker ps
 
-google-chrome "http://demo.res.ch:8080" &
-google-chrome "http://demo.res.ch:8080/balancer-manager" &
+google-chrome "http://localhost:9000" &
