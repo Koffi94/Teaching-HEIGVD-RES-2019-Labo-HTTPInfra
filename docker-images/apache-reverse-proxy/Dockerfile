@@ -6,5 +6,5 @@ COPY conf/ /etc/apache2
 
 RUN apt-get update && \
     apt-get install -y vim
-RUN a2enmod proxy proxy_http
+RUN a2enmod lbmethod_byrequests proxy proxy_http proxy_balancer
 RUN a2ensite 000-* 001-*

@@ -1,4 +1,4 @@
-# Report Step 4
+# Report Step 5
 
 1.  Edit **docker-images/apache-reverse-proxy/templates/config-template.php** :
 
@@ -123,7 +123,7 @@
 
    
 
-7.  Run the reverse proxy with `docker run -d --rm -e DYNAMIC_APP=172.17.0.8:3000 -e STATIC_APP=172.17.0.5:80 --name apache_rp -p 8080:80 res/apache_rp`
+7.  Run the reverse proxy with `docker run -d --rm -e STATIC_APP=172.17.0.5:80 -e DYNAMIC_APP=172.17.0.8:3000 --name apache_rp -p 8080:80 res/apache_rp`
 
 8. Test in your web browser :
 
