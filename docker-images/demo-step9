@@ -1,0 +1,24 @@
+#!/bin/bash
+
+./../deploy.sh
+
+docker run -d -e STATIC_APP1=172.17.0.2:80 -e STATIC_APP2=172.17.0.3:80 -e DYNAMIC_APP1=172.17.0.4:3000 -e DYNAMIC_APP2=172.17.0.5:3000 --name apache-reverse-proxy -p 8080:80 -t res/apache_reverse_proxy
+
+docker ps
+
+echo "apache_static 1: "
+docker inspect apache_static1 | grep IPAddress
+echo "apache_static 2: "
+docker inspect apache_static2 | grep IPAddress
+
+echo "express_dynamic 1: "
+docker inspect express_dynamic1 | grep IPAddress
+echo "express_dynamic 2: "
+docker inspect express_dynamic2 | grep IPAddress
+
+echo "apache_reverse_proxy: "
+docker logs apache-reverse-proxy
+
+docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+
+# Open a web browser of your choice and type in : "http://localhost:9000"
