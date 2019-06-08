@@ -58,7 +58,7 @@ Sticky Session is a method used with Load Balancing, to achieve server affinity.
    </VirtualHost>
    ```
 
-   Note : With this configuration, requests for static servers are implemented in round-robin mode while requests for dynamic servers from statics servers are implemented in sticky sessions mode.
+   Note : With this configuration, requests for static servers are implemented in round-robin mode while requests for dynamic servers are implemented in sticky sessions mode.
 
    
 
@@ -101,3 +101,7 @@ Sticky Session is a method used with Load Balancing, to achieve server affinity.
    
 
 5. Now open another page at http://demo.res.ch:8080/ and refresh.
+
+   ![](./images/Step7/balancer_manager_2.png)
+
+Note : Now we can see that the second dynamic server (.5) has been selected for the new static server request. With this test, we can see that each new connection to a static server generate a new session with the dynamic server.
