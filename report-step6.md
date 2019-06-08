@@ -101,6 +101,6 @@ To configure *load-balancing* in the reverse proxy we need to add modules *lbmet
 
 5. Another test we can make. Simply kill a static and dynamic server and the connection should stay up.
 
-![](/home/olivier/HEIG/S4/RES/Labos/HTTP-Infra/images/Step6/test_balancer_manager_2.png)
+![](./images/Step6/test_balancer_manager_2.png)
 
 Note : We can see that the servers stoped are Status **Init Error** but the clusters still **Active**.
