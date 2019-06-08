@@ -6,12 +6,10 @@
 
 3. In the main directory, run the `deploy.sh` script.
 
-4. We the following command that allow to manage containers in a web administration page : 
+4. We add the following command in the script that allow to manage containers in a web administration page : 
 `docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer`
 
-5. Open a Web Browser of your choice and type in : `http://localhost:9000`.
-
-6. Log into the application with these creds :<br/>
+5. Log into the application with these creds :<br/>
   login : `admin`<br/>
   pass : `12341234`
 
