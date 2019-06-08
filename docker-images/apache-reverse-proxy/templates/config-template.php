@@ -14,9 +14,11 @@
 
     ProxyPass /balancer-manager !
 
+     Header add Set-Cookie "ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/" env=BALANCER_ROUTE_CHANGED
     <Proxy balancer://dynamic>
-        BalancerMember 'http://<?php print "$dynamic_app_1"?>'
-        BalancerMember 'http://<?php print "$dynamic_app_2"?>'
+        BalancerMember 'http://<?php print "$dynamic_app_1"?>' route=1
+        BalancerMember 'http://<?php print "$dynamic_app_2"?>' route=2
+        ProxySet stickysession=ROUTEID
     </Proxy>
 
     ProxyPass '/api/animals/' 'balancer://dynamic/'
