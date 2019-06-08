@@ -38,7 +38,7 @@ To configure *load-balancing* in the reverse proxy we need to add modules *lbmet
    
        ProxyPass /balancer-manager !
    
-       <Proxy "balancer://dynamic">
+       <Proxy balancer://dynamic>
            BalancerMember 'http://<?php print "$dynamic_app_1"?>/'
            BalancerMember 'http://<?php print "$dynamic_app_2"?>/'
        </Proxy>
@@ -46,7 +46,7 @@ To configure *load-balancing* in the reverse proxy we need to add modules *lbmet
        ProxyPass        '/api/animals/' 'balancer://dynamic/'
        ProxyPassReverse '/api/animals/' 'balancer://dynamic/'
    
-       <Proxy "balancer://static">
+       <Proxy balancer://static>
            BalancerMember 'http://<?php print "$static_app_1"?>/'
            BalancerMember 'http://<?php print "$static_app_2"?>/'
        </Proxy>
@@ -91,7 +91,7 @@ To configure *load-balancing* in the reverse proxy we need to add modules *lbmet
 
    
 
-4. Send several request at http://demo.res.ch:8080/ with **wget** for example or use my script **requestGenerator.sh**, then open the page <http://demo.res.ch:8080/balancer-manager>
+4. Open several pages at http://demo.res.ch:8080/ with your browser web, then open the page <http://demo.res.ch:8080/balancer-manager> and refresh pages.
 
    ![](./images/Step6/test_balancer_manager.png)
 

@@ -14,20 +14,19 @@
 
     ProxyPass /balancer-manager !
 
-    <Proxy "balancer://dynamic">
-        BalancerMember 'http://<?php print "$dynamic_app_1"?>/'
-        BalancerMember 'http://<?php print "$dynamic_app_2"?>/'
+    <Proxy balancer://dynamic>
+        BalancerMember 'http://<?php print "$dynamic_app_1"?>'
+        BalancerMember 'http://<?php print "$dynamic_app_2"?>'
     </Proxy>
 
-    ProxyPass        '/api/animals/' 'balancer://dynamic/'
+    ProxyPass '/api/animals/' 'balancer://dynamic/'
     ProxyPassReverse '/api/animals/' 'balancer://dynamic/'
 
-    <Proxy "balancer://static">
-        BalancerMember 'http://<?php print "$static_app_1"?>/'
-        BalancerMember 'http://<?php print "$static_app_2"?>/'
+    <Proxy balancer://static>
+        BalancerMember 'http://<?php print "$static_app_1"?>'
+        BalancerMember 'http://<?php print "$static_app_2"?>'
     </Proxy>
-
-    ProxyPass        '/' 'balancer://static/'
+    ProxyPass '/' 'balancer://static//'
     ProxyPassReverse '/' 'balancer://static/'
     	
 </VirtualHost>
